@@ -1,0 +1,124 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block body %}
+
+<div class="main-wrapper">
+
+{% comment %} header  {% endcomment %}
+
+{% include "header.html" %}
+
+
+<div class="breadcrumb-bar">
+<div class="container-fluid">
+<div class="row align-items-center">
+<div class="col-md-12 col-12">
+<nav aria-label="breadcrumb" class="page-breadcrumb">
+<ol class="breadcrumb">
+<li class="breadcrumb-item"><a href="index.html">Home</a></li>
+<li class="breadcrumb-item active" aria-current="page">Dashboard</li>
+</ol>
+</nav>
+<h2 class="breadcrumb-title">Dashboard</h2>
+</div>
+</div>
+</div>
+</div>
+
+
+<div class="content">
+<div class="container">
+<div class="row">
+
+{% comment %} profile sidebar  {% endcomment %}
+
+{% include "student-sidebar.html" %}
+
+<div class="col-md-7 col-lg-8 col-xl-9">
+<div class="card">
+<div class="card-body pt-0">
+
+<nav class="user-tabs mb-4">
+<ul class="nav nav-tabs nav-tabs-bottom nav-justified">
+<li class="nav-item">
+<a class="nav-link active" href="#pre_appointments" data-toggle="tab">Appointments</a>
+</li>
+
+</ul>
+</nav>
+
+
+<div class="tab-content pt-0">
+
+<div id="pre_appointments" class="tab-pane fade show active">
+<div class="card card-table mb-0">
+<div class="card-body">
+<div class="table-responsive">
+<table class="table table-hover table-center mb-0">
+ <thead>
+<tr>
+<th>Course Name</th>
+<th>Appt Date</th>
+<th>Booking Time</th>
+<th>Price</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+    {% for i in req %}
+<tr>
+<td>
+<h2 class="table-avatar">
+<a href="sermon-profile-2.html" class="avatar avatar-sm mr-2">
+<img class="avatar-img rounded-circle" src="{{ i.course.cover.url }}" alt="User Image">
+</a>
+<a href="sermon-profile-2.html"> {{ i.course.title }} <span>{{ req.course.cat }}</span></a>
+</h2>
+</td>
+<td>{{ i.date }} <span class="d-block text-info">{{ i.course.stime }} - {{ i.course.etime }}</span></td>
+<td>{{ i.reqTime }}</td>
+<td>${{ i.course.price }}</td>
+<td>
+    {% if i.status.name == "Pending" %}
+    <span class="badge badge-pill bg-warning-light">{{ i.status }}</span>
+    {% elif i.status.name == "Accepted" %}
+    <span class="badge badge-pill bg-success-light">{{ i.status }}</span>
+    {% else %}
+    <span class="badge badge-pill bg-danger-light">{{ i.status }}</span>
+    {% endif %}
+
+</td>
+</tr>
+    {% endfor %}
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+
+
+
+
+
+
+
+</div>
+
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+{% comment %} footer  {% endcomment %}
+
+{% include "footer.html" %}
+
+</div>
+
+
+{% endblock %}

@@ -1,0 +1,83 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block body %}
+
+<div class="main-wrapper">
+
+{% comment %} header {% endcomment %}
+{% include "header.html" %}
+
+
+
+<div class="breadcrumb-bar">
+<div class="container-fluid">
+<div class="row align-items-center">
+<div class="col-md-12 col-12">
+<nav aria-label="breadcrumb" class="page-breadcrumb">
+<ol class="breadcrumb">
+<li class="breadcrumb-item"><a href="index.html">Home</a></li>
+<li class="breadcrumb-item active" aria-current="page">Blog</li>
+</ol>
+</nav>
+<h2 class="breadcrumb-title">Course Details</h2>
+</div>
+</div>
+</div>
+</div>
+
+
+<div class="content">
+<div class="container">
+<div class="row">
+<div class="col-lg-12 col-md-12">
+<div class="blog-view">
+<div class="blog blog-single-post bdr_1">
+<div class="blog-image">
+<a href="javascript:void(0);"><img alt="" src="{{ course.cover.url }}" class="img-fluid"></a>
+</div>
+<h3 class="blog-title">{{ course.title }}</h3>
+<div class="blog-info clearfix">
+<div class="post-left">
+<ul>
+<li>
+<div class="post-author">
+<a href="sermon-profile-2.html"><img src="{{ course.cover.url }}" alt="Post Author"> <span>Category: {{ course.cat }}</span></a>
+</div>
+</li>
+<li><i class="far fa-calendar"></i>Days: {% for i in course.days.all %} {{ i }},{% endfor %}</li>
+<li><i class="far fa-comments"></i>Time: {{ course.stime }} - {{ course.etime }}</li>
+<li><i class="fa fa-tags"></i>Language: {{ course.lang }}</li>
+<li><i class="fa fa-tags"></i>Type: {{ course.typo }}</li>
+<li><i class="fa fa-tags"></i>Age: {{ course.sage }} - {{ course.eage }}</li>
+</ul>
+</div>
+</div>
+<div class="blog-content mb-5">
+<p>{{ course.desc }}</p>
+</div>
+<a href="/booking/{{ course.id }}" class="btn btn-primary submit-btn">Book Now</a>
+</div>
+
+
+
+
+</div>
+
+
+</div>
+</div>
+
+
+
+</div>
+</div>
+</div>
+
+
+{% include "footer.html" %}
+
+</div>
+
+
+{% endblock %}

@@ -1,0 +1,160 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block body %}
+
+<div class="main-wrapper">
+
+{% comment %} header  {% endcomment %}
+
+{% include "header.html" %}
+
+
+<div class="breadcrumb-bar">
+<div class="container-fluid">
+<div class="row align-items-center">
+<div class="col-md-8 col-12">
+<nav aria-label="breadcrumb" class="page-breadcrumb">
+<ol class="breadcrumb">
+<li class="breadcrumb-item"><a href="index.html">Home</a></li>
+<li class="breadcrumb-item active" aria-current="page">Search</li>
+</ol>
+</nav>
+<h2 class="breadcrumb-title">Courses</h2>
+</div>
+<div class="col-md-4 col-12 d-md-block d-none">
+<div class="sort-by">
+<span class="sort-title">Sort by</span>
+<span class="sortby-fliter">
+<select class="select">
+<option>Select</option>
+<option class="sorting">Rating</option>
+<option class="sorting">Popular</option>
+<option class="sorting">Latest</option>
+<option class="sorting">Free</option>
+</select>
+</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+<div class="content">
+<div class="container">
+<div class="row">
+<div class="col-md-12 col-lg-4 col-xl-3 theiaStickySidebar">
+
+<div class="card search-filter">
+<div class="card-header">
+<h4 class="card-title mb-0">Search Filter</h4>
+</div>
+<div class="card-body">
+<div class="filter-widget">
+
+</div>
+<div class="filter-widget">
+<h4>Category</h4>
+<div>
+<label class="custom_check">
+<input type="checkbox" name="gender_type" checked>
+<span class="checkmark"></span> Demo
+</label>
+</div>
+
+</div>
+<div class="filter-widget">
+<h4>Type</h4>
+<div>
+<label class="custom_check">
+<input type="checkbox" name="select_specialist" checked>
+<span class="checkmark"></span> Individual
+</label>
+</div>
+<div>
+<label class="custom_check">
+<input type="checkbox" name="select_specialist" checked>
+<span class="checkmark"></span> Group
+</div>
+
+
+</div>
+<div class="btn-search">
+<button type="button" class="btn btn-block">Search</button>
+</div>
+</div>
+</div>
+
+</div>
+<div class="col-md-12 col-lg-8 col-xl-9">
+{% for i in course%}
+<div class="card">
+<div class="card-body">
+<div class="sermon-widget">
+<div class="ser-info-left">
+<div class="sermon-img">
+<a href="sermon-profile-2.html">
+<img src="{{ i.cover.url }}" class="img-fluid" alt="User Image">
+</a>
+</div>
+<div class="ser-info-cont">
+<h4 class="ser-name"><a href="sermon-profile-2.html">{{ i.title }}</a></h4>
+<p class="ser-speciality">{{ i.cat }}</p>
+<h5 class="ser-department">Type: {{ i.typo }}</h5>
+<div class="rating">
+ <i class="fas fa-star filled"></i>
+<i class="fas fa-star filled"></i>
+<i class="fas fa-star filled"></i>
+<i class="fas fa-star filled"></i>
+<i class="fas fa-star"></i>
+<span class="d-inline-block average-rating">(17)</span>
+</div>
+<div class="clinic-details">
+<p class="ser-location"><i class="fas fa-map-marker-alt"></i> {{ i.loc }}</p>
+<p class="ser-location"></i>Date: {{ i.date }}</p>
+<p class="ser-location">Time: {{ i.stime }} - {{ i.etime }}</p>
+
+</div>
+
+</div>
+</div>
+<div class="ser-info-right">
+<div class="clini-infos">
+<ul>
+
+<li>Language: {{ i.lang }}</li>
+<li>Age: {{ i.sage }} - {{ i.eage }}</li>
+<li><i class="far fa-money-bill-alt"></i> ${{ i.price }} <i class="fas fa-info-circle" data-toggle="tooltip" title="Lorem Ipsum"></i> </li>
+</ul>
+</div>
+<div class="clinic-booking">
+<a class="view-pro-btn" href="/course-details/{{ i.id }}">Details</a>
+<a class="apt-btn" href="/booking/{{ i.id }}">Book Class</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+{% endfor %}
+
+
+
+<div class="load-more text-center">
+<a class="btn btn-primary btn-sm" href="javascript:void(0);">Load More</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+{% comment %} footer  {% endcomment %}
+
+{% include "footer.html" %}
+
+</div>
+
+
+{% endblock %}

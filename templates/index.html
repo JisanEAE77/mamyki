@@ -1,0 +1,253 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block body %}
+
+<div class="main-wrapper">
+
+{% comment %} header {% endcomment %}
+{% include "header.html" %}
+
+
+<section class="section section-banner">
+<div class="container-fluid">
+<div class="banner-wrapper">
+<div class="overlay"></div>
+<div class="banner-header text-center">
+<img src="{% static 'img/logo2.png' %}" class="img-fluid pb-3" alt="Logo">
+<h3 class="text-white">WE HELP YOUR KIDS TO LEARN</h3>
+<h1>Why MaMyKi</h1>
+<p class="text-white">We provide the best offers for kids-related interest classes. You can now book in different types of
+    interest classes for your kids by using a one-of-all-kind monthly plan credits system.</p>
+<div class="row">
+<div class="col-md-12">
+<div class="mt-5">
+<a href="/register" class="get-start">GET STARTED</a>
+<a href="/courses" class="ml-2 sermons text-white">COURSES</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<section class="section mt-5 pl-5 pr-5">
+    <div class="card-group">
+        <div class="card">
+            <img src="{% static 'img/icon/reservation.png' %}" class="m-auto" alt="..." height="150px" width="150x">
+            <div class="card-body">
+                <h5 class="card-title text-center">Easiest Way For Booking</h5>
+                <p class="card-text">You can search and book interest classes at
+                    anytime, from anywhere. The system can help
+                    you easily find available instructors that could fit
+                    
+                    with your kid's schedule.</p>
+            </div>
+            
+        </div>
+        <div class="card">
+            <img src="{% static 'img/icon/cashless-payment.png' %}" class="m-auto" alt="..." height="150px" width="150x">
+            <div class="card-body">
+                <h5 class="card-title text-center">All Payments In One Place</h5>
+                <p class="card-text">Usually interest classes would be charged
+                    by a monthly basis, you can pay a total
+                    amount of the expenses and proceed with
+                    different providers, so that it is more
+                    efficient to manage the expenses.</p>
+            </div>
+           
+        </div>
+        <div class="card">
+            <img src="{% static 'img/icon/new-email.png' %}" class="m-auto" alt="..." height="150px" width="150x">
+            <div class="card-body">
+                <h5 class="card-title text-center">Automatic Notifications</h5>
+                <p class="card-text">Whenever classes are booked, cancelled or
+                    rescheduled, there are automatic reminders to be
+                    sent out to parents and instructors instantly. The
+                    system can minimise the chance for missing
+                    
+                    classes.</p>
+            </div>
+            
+        </div>
+        <div class="card">
+            <img src="{% static 'img/icon/calendar.png' %}" class="m-auto" alt="..." height="150px" width="150x">
+            <div class="card-body">
+              <h5 class="card-title text-center">Synchronise Calendars</h5>
+              <p class="card-text">Synchronise the bookings in the calendar
+                to avoid conflicts. In case of any change of
+                classes, the calendar of kid’s guardians or
+                helpers would be synchronised to prevent
+                any missing classes.</p>
+            </div>
+            
+          </div>
+      </div>
+
+</section>
+<section class="section section-sermons sermons-sec prayers">
+<img src="{% static 'img/Ellipse1.png' %}" alt="ellipse_img" class="ellipse ellipse1">
+<img src="{% static 'img/Ellipse2.png' %}" alt="ellipse_img" class="ellipse ellipse2">
+<img src="{% static 'img/Ellipse3.png' %}" alt="ellipse_img" class="ellipse ellipse3">
+<img src="{% static 'img/Ellipse3.png' %}" alt="ellipse_img" class="ellipse ellipse13">
+<img src="{% static 'img/Ellipse1.png' %}" alt="ellipse_img" class="ellipse ellipse4">
+<img src="{% static 'img/Ellipse2.png' %}" alt="ellipse_img" class="ellipse ellipse5">
+<img src="{% static 'img/Ellipse2.png' %}" alt="ellipse_img" class="ellipse ellipse6">
+<img src="{% static 'img/Ellipse2.png' %}" alt="ellipse_img" class="ellipse ellipse7">
+<img src="{% static 'img/balloon.png' %}" alt="Image" class="balloon1">
+<div class="container">
+<img src="{% static 'img/vector1.png' %}" alt="ellipse_img" class="ellipse vector1">
+<div class="row">
+<div class="col-md-12">
+<div class="section-header text-center">
+<h2>COURSES</h2>
+<p class="sub-title">FIND THE BEST COURSE </p>
+<span class="bottom-border"></span>
+</div>
+</div>
+</div>
+<div class="row blog">
+<div class="col-md-12">
+<div class="specialities-slider slider">
+
+
+    {% for i in course %}
+<div class="churches">
+<div class="sermons-img">
+<a href="/course-details/{{ i.id }}" tabindex="0">
+<img class="img-fluid" alt="User Image" src="{{ i.cover.url }}">
+</a>
+</div>
+<div class="pro-content">
+<h3 class="title">
+<a href="/course-details/{{ i.id }}" tabindex="0">{{ i.title }}</a>
+</h3>
+<p class="speciality">{{ i.cat }}</p>
+<div class="info">
+<div class="float-left d-inline-flex">
+<div class="inline-block pr-2 common-img">
+<img src="{% static 'img/location1.png' %}" alt="Location">
+</div>
+<div class="inline-block">
+<p class="addrs">City</p>
+<p>{{ i.loc }}</p>
+</div>
+</div>
+<div class="float-right d-inline-flex">
+
+
+</div>
+</div>
+<div class="info">
+    <div class="float-left d-inline-flex">
+    <div class="inline-block pr-2 common-img">
+    <img src="{% static 'img/location1.png' %}" alt="Location">
+    </div>
+    <div class="inline-block">
+    <p class="addrs">Type</p>
+    <p>{{ i.typo }}</p>
+    </div>
+    </div>
+    <div class="float-right d-inline-flex">
+    <div class="inline-block pr-2 common-img">
+    <img src="{% static 'img/timer.png' %}" alt="Location">
+    </div>
+    <div class="inline-block">
+    <p class="addrs">Time</p>
+    <p>{{ i.stime }} - {{ i.etime }}</p>
+    </div>
+    </div>
+    </div>
+<div class="info">
+<div class="float-left d-inline-flex">
+<div class="inline-block pr-2 common-img">
+<img src="{% static 'img/organizer.png' %}" alt="Location">
+</div>
+
+<div class="inline-block">
+<p class="addrs">Language</p>
+<p>{{ i.lang }}</p>
+</div>
+</div>
+<div class="float-right d-inline-flex">
+<div class="inline-block pr-2 common-img seat">
+<img src="{% static 'img/seats.png' %}" alt="Location">
+</div>
+<div class="inline-block">
+<p class="addrs">Age</p>
+<p>{{ i.sage }} - {{ i.eage }}</p>
+</div>
+</div>
+</div>
+<div class="row row-sm clearfix bdr">
+<div class="col-6">
+<h4>$ {{ i.price }}</h4>
+</div>
+<div class="col-6">
+<a href="/booking/{{ i.id }}" class="btn book-btn" tabindex="0">Book Now</a>
+</div>
+</div>
+</div>
+ </div>
+
+
+
+{% endfor %}
+
+
+
+</div>
+
+<div class="row">
+ <div class="col-md-12 text-center">
+<a href="/courses" class="view-more">VIEW MORE</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+<img src="{% static 'img/vector1.png' %}" alt="ellipse_img" class="ellipse vector2">
+</section>
+
+
+
+<section class="counters-section">
+<div class="container">
+<div class="row text-center">
+<div class="col-md-3">
+<div class="blue">
+<h1>250 +</h1>
+<p>Students</p>
+</div>
+</div>
+<div class="col-md-3">
+<div class="orange">
+<h1>1250 +</h1>
+<p>Instructors</p>
+</div>
+</div>
+<div class="col-md-3">
+<div class="blue">
+<h1>250 +</h1>
+<p>Courses</p>
+</div>
+</div>
+<div class="col-md-3">
+<div class="pink">
+<h1>5650 +</h1>
+<p>Events</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+
+{% comment %} footer {% endcomment %}
+{% include "footer.html" %}
+
+</div>
+
+
+{% endblock %}

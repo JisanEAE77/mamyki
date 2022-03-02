@@ -1,0 +1,1 @@
+web gunicorn mamyki.wsgi:application --log-file -

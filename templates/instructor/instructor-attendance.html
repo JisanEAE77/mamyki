@@ -1,0 +1,129 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block body %}
+
+<div class="main-wrapper">
+
+{% comment %} header {% endcomment %}
+{% include "header.html" %}
+
+
+<div class="breadcrumb-bar">
+<div class="container-fluid">
+<div class="row align-items-center">
+<div class="col-md-12 col-12">
+<nav aria-label="breadcrumb" class="page-breadcrumb">
+<ol class="breadcrumb">
+<li class="breadcrumb-item"><a href="index.html">Home</a></li>
+<li class="breadcrumb-item active" aria-current="page">Dashboard</li>
+</ol>
+</nav>
+<h2 class="breadcrumb-title">Dashboard</h2>
+</div>
+</div>
+</div>
+</div>
+
+
+<div class="content">
+<div class="container">
+<div class="row">
+<div class="col-md-5 col-lg-4 col-xl-3 theiaStickySidebar">
+
+{% comment %} profile sidebar  {% endcomment %}
+
+{% include "instructor-sidebar.html" %}
+
+</div>
+<div class="col-md-7 col-lg-8 col-xl-9">
+<div class="row">
+<div class="col-md-12">
+<h4 class="mb-4">Class Management</h4>
+<div class="appointment-tab">
+
+<ul class="nav nav-tabs nav-tabs-solid nav-tabs-rounded">
+<li class="nav-item">
+<a class="nav-link active" href="#upcoming-appointments" data-toggle="tab">Classes</a>
+</li>
+
+</ul>
+
+<div class="tab-content">
+
+<div class="tab-pane show active" id="upcoming-appointments">
+<div class="card card-table mb-0">
+<div class="card-body">
+<div class="table-responsive">
+<table class="table table-hover table-center mb-0">
+<thead>
+<tr>
+<th>Student Name</th>
+<th>Course</th>
+<th>Date</th>
+<th>Time</th>
+<th>Location</th>
+<th>Attendance</th>
+</tr>
+</thead>
+<tbody>
+    {% for i in class %}
+<tr>
+<td>
+<h2 class="table-avatar">
+<a>{{ i.request.student.username }}</a>
+</h2>
+</td>
+<td><span>{{ i.request.course.title }}</span></td>
+<td>{{ i.date }}</td>
+<td>{{ i.time }}</td>
+<td>{{ i.request.course.loc.name }}</td>
+{% if i.request.status.name == "Accepted" %}
+<td>
+    {% if i.attendance %}
+        {% if i.attendance == "Present" %}
+        <span class="badge badge-pill bg-success-light">{{ i.attendance }}</span>
+        {% elif i.attendance == "Absent" %}
+        <span class="badge badge-pill bg-danger-light">{{ i.attendance }}</span>
+        {% endif %}
+    {% else %}
+        <div class="table-action">
+            <a href="/present/{{ i.id }}" class="btn btn-sm bg-success-light">
+            <i class="fas fa-check"></i> Present
+            </a>
+            <a href="/absent/{{ i.id }}" class="btn btn-sm bg-danger-light">
+            <i class="fas fa-times"></i> Absent
+            </a>
+        </div>
+    {% endif %}
+</td>
+{% endif %}
+
+</tr>
+{% endfor %}
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+
+
+
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+{% comment %} footer {% endcomment %}
+{% include "footer.html" %}
+
+</div>
+
+
+{% endblock %}

@@ -1,0 +1,59 @@
+{% load static %}
+
+<div class="profile-sidebar">
+    <div class="widget-profile pro-widget-content">
+    <div class="profile-info-widget">
+ 
+    <div class="profile-det-info">
+    <h3>Username: {{ request.user.username }}</h3>
+    <div class="preacher-details">
+ 
+    </div>
+    </div>
+    </div>
+    </div>
+    <div class="dashboard-widget">
+    <nav class="dashboard-menu">
+    <ul>
+    <li class="active">
+    <a href="/dashboard">
+    <i class="fas fa-columns"></i>
+    <span>Dashboard</span>
+    </a>
+    </li>
+    <li>
+    <a href="/manage-class">
+    <i class="fas fa-columns"></i>
+    <span>Manage Class</span>
+    </a>
+    </li>
+    <li>
+    <a href="/add-course">
+    <i class="fas fa-columns"></i>
+    <span>Add Course</span>
+    </a>
+    </li>
+    <li>
+    <a href="/my-courses">
+    <i class="fas fa-user-injured"></i>
+    <span>My Courses</span>
+    </a>
+    </li>
+   
+ 
+    <li>
+    <a href="/changepasswordi">
+    <i class="fas fa-lock"></i>
+    <span>Change Password</span>
+    </a>
+    </li>
+    <li>
+    <a href="/logOut">
+    <i class="fas fa-sign-out-alt"></i>
+    <span>Logout</span>
+    </a>
+    </li>
+    </ul>
+    </nav>
+    </div>
+    </div>

@@ -1,0 +1,241 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block body %}
+
+
+<div class="main-wrapper">
+
+{% comment %} header  {% endcomment %}
+
+{% include "header.html" %}
+
+
+<div class="breadcrumb-bar">
+<div class="container-fluid">
+<div class="row align-items-center">
+<div class="col-md-12 col-12">
+<nav aria-label="breadcrumb" class="page-breadcrumb">
+<ol class="breadcrumb">
+<li class="breadcrumb-item"><a href="index.html">Home</a></li>
+<li class="breadcrumb-item active" aria-current="page">Profile Settings</li>
+</ol>
+</nav>
+<h2 class="breadcrumb-title">Profile Settings</h2>
+</div>
+</div>
+</div>
+</div>
+
+
+<div class="content">
+<div class="container">
+<div class="row">
+<div class="col-md-5 col-lg-4 col-xl-3 theiaStickySidebar">
+
+{% comment %} profile sidebar  {% endcomment %}
+
+{% include "instructor-sidebar.html" %}
+
+</div>
+
+<div class="col-md-7 col-lg-8 col-xl-9">
+<form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+<div class="card">
+<div class="card-body">
+<h4 class="card-title">Basic Information</h4>
+<div class="row form-row">
+<div class="col-md-12">
+<div class="form-group">
+<div class="change-avatar">
+<div class="upload-img">
+<div class="change-photo-btn">
+<span><i class="fa fa-upload"></i> Upload Thumbnail</span>
+<input type="file" class="upload" name="thumbnail">
+</div>
+<small class="form-text text-muted">Allowed JPG, GIF or PNG. Max size of 2MB</small>
+</div>
+</div>
+</div>
+</div>
+
+
+
+
+
+
+<div class="col-md-6">
+<div class="form-group">
+<label>Category</label>
+<select class="form-control select" name="category">
+    <option value="">-Select-</option>
+    {% for i in category %}
+    <option value="{{i.name}}">{{i.name}}</option>
+    {% endfor%}
+</select>
+</div>
+</div>
+<div class="col-md-6">
+    <div class="form-group">
+    <label>Type</label>
+    <select class="form-control select" name="type">
+        <option value="">-Select-</option>
+        {% for i in typo %}
+        <option value="{{i.name}}">{{i.name}}</option>
+        {% endfor%}
+    </select>
+    </div>
+    </div>
+<div class="col-md-6">
+    <div class="form-group">
+    <label>Location</label>
+    <select class="form-control select" name="city">
+        <option value="">-Select-</option>
+        {% for i in city %}
+        <option value="{{i.name}}">{{i.name}}</option>
+        {% endfor%}
+    </select>
+    </div>
+    </div>
+<div class="col-md-6">
+    <div class="form-group">
+    <label>Language</label>
+    <select class="form-control select" name="lang">
+        <option value="">-Select-</option>
+        {% for i in lang %}
+        <option value="{{i.name}}">{{i.name}}</option>
+        {% endfor%}
+    </select>
+    </div>
+    </div>
+<div class="col-md-6">
+    <div class="form-group">
+    <label>Price (In HKD)</label>
+    <input type="number" class="form-control" name="price">
+    </div>
+    </div>
+<div class="col-md-12">
+<div class="form-group mb-0">
+<label>Title</label>
+<input type="text" class="form-control" name="title">
+</div>
+</div>
+
+</div>
+</div>
+</div>
+
+
+
+<div class="card">
+<div class="card-body">
+<h4 class="card-title">Schedule</h4>
+<div class="experience-info">
+<div class="row form-row experience-cont">
+<div class="col-12 col-md-10 col-lg-11">
+<div class="row form-row">
+<div class="col-12 col-md-12 col-lg-12">
+    <div class="form-group">
+        <label>Days</label>
+        <select class="form-control select" name="days" multiple>
+            {% for i in days %}
+            <option value="{{i.name}}">{{i.name}}</option>
+            {% endfor%}
+        </select>
+    </div>
+</div>
+<div class="col-md-6">
+    <div class="form-group">
+    <label>From (Time)</label>
+    <select class="form-control select" name="stime">
+        {% for i in time %}
+        <option value="{{i.name}}">{{i.name}}</option>
+        {% endfor%}
+    </select>
+    </div>
+</div>
+<div class="col-md-6">
+    <div class="form-group">
+    <label>To (Time)</label>
+    <select class="form-control select" name="etime">
+        {% for i in time %}
+        <option value="{{i.name}}">{{i.name}}</option>
+        {% endfor%}
+    </select>
+</div>
+</div>
+
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="card">
+<div class="card-body">
+<h4 class="card-title">Age Range</h4>
+<div class="experience-info">
+<div class="row form-row experience-cont">
+<div class="col-12 col-md-10 col-lg-11">
+<div class="row form-row">
+<div class="col-12 col-md-6 col-lg-6">
+<div class="form-group">
+<label>From</label>
+<input type="number" min="2" max="100" class="form-control" name="sage">
+</div>
+</div>
+<div class="col-12 col-md-6 col-lg-6">
+<div class="form-group">
+<label>To</label>
+<input type="number" min="2" max="100" class="form-control" name="eage">
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="card">
+<div class="card-body">
+<h4 class="card-title">Description</h4>
+<div class="form-group mb-0">
+<textarea class="form-control" rows="5" name="description"></textarea>
+</div>
+</div>
+</div>
+
+
+
+
+
+
+
+
+<div class="submit-section submit-btn-bottom">
+<button type="submit" class="btn btn-primary submit-btn">Create Course</button>
+</div>
+</div>
+</form>
+</div>
+</div>
+</div>
+
+
+
+
+{% comment %} footer  {% endcomment %}
+
+{% include "footer.html" %}
+
+</div>
+
+
+{% endblock %}
